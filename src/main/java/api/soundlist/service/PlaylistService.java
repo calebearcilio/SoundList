@@ -36,17 +36,12 @@ public class PlaylistService {
 
   public PlaylistResponseDTO update(Long id, PlaylistUpdateDTO dto){
     var playlist = findOrThrow(id);
-    playlist = playlistMapper.updateEntityFromDTO(dto);
+    playlistMapper.updateEntityFromDTO(dto, playlist);
     return playlistMapper.toDTO(playlistRepository.save(playlist));
   }
 
   public void delete(Long id) {
     var playlist = findOrThrow(id);
-
-    // Desvinculando as músicas antes de deletar uma playlist
-    playlist.getMusics().forEach(music -> music.setPlaylist(null));
-    musicRepository.saveAll(playlist.getMusics());
-
     playlistRepository.delete(playlist);
   }
 
