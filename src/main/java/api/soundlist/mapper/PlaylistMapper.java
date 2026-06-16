@@ -21,9 +21,9 @@ public interface PlaylistMapper {
 
   @Mapping(target = "id", ignore = true)
   @Mapping(target = "musics", ignore = true)
-  void updateEntityFromDTO(PlaylistUpdateDTO dto, @MappingTarget Playlist playlist);
+  Playlist updateEntityFromDTO(PlaylistUpdateDTO dto);
 
   default Page<PlaylistResponseDTO> toPageDTO(Page<Playlist> playlists) {
     return playlists.map(this::toDTO);
-  }
+  };
 }

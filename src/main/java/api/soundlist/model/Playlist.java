@@ -23,6 +23,6 @@ public class Playlist {
 
   private String description;
 
-  @OneToMany(mappedBy = "playlist", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "playlist", cascade = { CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
   private List<Music> musics = new ArrayList<>();
 }

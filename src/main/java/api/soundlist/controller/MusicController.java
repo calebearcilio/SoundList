@@ -21,7 +21,7 @@ public class MusicController {
   private final MusicService musicService;
 
   @GetMapping
-  public ResponseEntity<Page<MusicResponseDTO>> getAll(@PageableDefault(size = 5, sort = "title") Pageable pageable) {
+  public ResponseEntity<Page<MusicResponseDTO>> getALl(@PageableDefault(size = 5, sort = "title") Pageable pageable) {
     var musics = musicService.findAll(pageable);
     return ResponseEntity.ok(musics);
   }
@@ -46,7 +46,7 @@ public class MusicController {
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> delete(@PathVariable Long id) {
-    musicService.delete(id);
-    return ResponseEntity.noContent().build();
+    musicService.detele(id);
+    return ResponseEntity.notFound().build();
   }
 }
