@@ -3,6 +3,7 @@ package api.soundlist.controller;
 import api.soundlist.dto.playlist.PlaylistCreateDTO;
 import api.soundlist.dto.playlist.PlaylistResponseDTO;
 import api.soundlist.dto.playlist.PlaylistUpdateDTO;
+import api.soundlist.dto.playlist.PlaylistWithMusicsResponseDTO;
 import api.soundlist.service.PlaylistService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,7 @@ public class PlaylistController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<PlaylistResponseDTO> getById(@PathVariable Long id) {
+  public ResponseEntity<PlaylistWithMusicsResponseDTO> getById(@PathVariable Long id) {
     var playlist = playlistService.findById(id);
     return ResponseEntity.ok(playlist);
   }

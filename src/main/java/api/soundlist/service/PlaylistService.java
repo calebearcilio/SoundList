@@ -3,6 +3,7 @@ package api.soundlist.service;
 import api.soundlist.dto.playlist.PlaylistCreateDTO;
 import api.soundlist.dto.playlist.PlaylistResponseDTO;
 import api.soundlist.dto.playlist.PlaylistUpdateDTO;
+import api.soundlist.dto.playlist.PlaylistWithMusicsResponseDTO;
 import api.soundlist.exception.playlist.PlaylistNotFoundException;
 import api.soundlist.mapper.PlaylistMapper;
 import api.soundlist.model.Playlist;
@@ -25,8 +26,8 @@ public class PlaylistService {
     return playlistMapper.toPageDTO(playlistRepository.findAll(pageable));
   }
 
-  public PlaylistResponseDTO findById(Long id) {
-    return playlistMapper.toDTO(findOrThrow(id));
+  public PlaylistWithMusicsResponseDTO findById(Long id) {
+    return playlistMapper.toRichEntityDTO(findOrThrow(id));
   }
 
   public PlaylistResponseDTO save(PlaylistCreateDTO dto) {
