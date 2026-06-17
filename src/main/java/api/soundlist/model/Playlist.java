@@ -25,4 +25,10 @@ public class Playlist {
 
   @OneToMany(mappedBy = "playlist", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
   private List<Music> musics = new ArrayList<>();
+
+  public void addMusic(String title, String artist, String genre, int duration) {
+    var music = new Music(null, title, artist, genre, duration, null);
+    musics.add(music);
+    music.setPlaylist(this);
+  }
 }
